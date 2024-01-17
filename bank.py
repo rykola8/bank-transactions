@@ -5,16 +5,22 @@
 transactions = []
 
 def deposit(transactions, amount):
-    pass
+    transactions.append(amount)
 
 def withdraw(transactions, amount):
-    pass
+    transactions.append(amount * -1)
 
 def check_balance(transactions):
-    pass
+    sum = 0
+    for i in transactions:
+        sum += i
+    if sum < 0:
+        print("You're in debt: " + str(sum))
+    elif sum > 0:
+        print(sum)
 
-def list():
-    pass
+def list(transactions):
+    print(transactions)
 
 while True:
     print("\nBanking Options:")
@@ -27,13 +33,17 @@ while True:
     choice = input("Enter your choice (1-4): ")
 
     if choice == '1':
-        pass
+        amount = float(input("How much do you want to add to the bill?: "))
+        deposit(transactions, amount)
+        print(transactions)
     elif choice == '2':
-        pass
+         amount = float(input("How much do you want to remove from the bill?: "))
+         withdraw(transactions, amount)
+         print(transactions)
     elif choice == '3':
-        pass
+        check_balance(transactions)
     elif choice == '4':
-        pass
+        print(transactions)
     elif choice == '5':
         print("Exiting the banking system. Thank you!")
         break
